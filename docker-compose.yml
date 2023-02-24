@@ -1,0 +1,46 @@
+version: '3'
+services:
+
+  # nuxtjs container
+  nuxt: 
+    build: .
+    image: nuxt-apps
+    container_name: nuxt-apps
+    volumes:
+      - .:/usr/src/app
+      - ./package.json://usr/src/app/package.json
+    command: ["sh", "-c", "./run.sh dev player"]
+    ports:
+      - "3000:3000"
+      - "80:3000"
+    # depends_on:
+    #   - mysql
+    # links:
+    #   - mysql
+    # networks:
+    #   - app
+
+  #Nginx Service 001
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: nginx
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+  #     - ./docker/nginx/logs:/var/log/nginx
+  #   depends_on:
+  #     - nuxt
+  #   links:
+  #     - nuxt
+  #   networks:
+  #     - app
+
+# driver: bridge
+#Docker Networks
+networks:
+  app:
+#Volumes
+volumes:
+  dbdata:
+    driver: local
