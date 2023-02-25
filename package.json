@@ -22,7 +22,6 @@
     "copy-default": "coppy.bat html_\\default",
     "publish-default": "npm run generate-default && npm run copy-default",
     "end-default": "---------------------------------------------------------------------------",
-    
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
     "prepare": "husky install",
